@@ -23,8 +23,8 @@
         };
       })
 
-
-      .controller("ExampleController", function($scope, $rootScope, $ionicPlatform, $cordovaBeacon,$cordovaToast,$location, $cordovaSms) {
+      // Main Code Controller 
+      .controller("MainController", function($scope, $rootScope, $ionicPlatform, $cordovaBeacon,$cordovaToast,$location, $cordovaSms) {
 
 
        $scope.checked=false;
@@ -83,7 +83,7 @@
         $scope.txpower=-69;
         $scope.distance = 0;
         console.log('inside find beacon');
-        $cordovaToast.showLongBottom('inside find beacon');
+       // $cordovaToast.showLongBottom('inside find beacon');
         $cordovaBeacon.requestWhenInUseAuthorization();
 
         $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function(event, pluginResult) {
@@ -100,6 +100,17 @@
                 }
                 else
                 {
+                	/* IMPORTANT 
+                	Main logic to identify the Beacon closest to the reciever 
+                	and give pre defined outputs as Beacons are configured
+                	
+                	Major 0 - Entrance
+                	Major 1 - Pantry
+                	Major 2 - Restroom
+                	Major 3 - Obstacle to replicate collision avoiding
+                	
+                	*/
+                	
                   //major 0 is for entrance
                   if(pluginResult.beacons[i].major==0)
                   {
@@ -168,6 +179,7 @@
                        $scope.data.speechText='You have an obstacle';
                    
                   }
+                  //Logic to Calculate Approx Distance from Signal strength
                   var rssi=parseInt(pluginResult.beacons[i].rssi);
                    //  $cordovaToast.showLongBottom('rssi'+rssi);
                    var  ratio =rssi/-69;
@@ -175,6 +187,7 @@
                     var accuracy =  (0.89976)*Math.pow(ratio,7.7095) + 0.111;  
                    //  $cordovaToast.showLongBottom('accuracy'+accuracy);
                    $scope.distance=accuracy;
+                   //Speak out when Bacon is very Close
                    if(accuracy<0.5 && ttsFlag)
                    {
                     ttsFlag=false;
