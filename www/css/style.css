@@ -1,0 +1,11 @@
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item{
+  overflow: inherit ;
+  text-overflow: inherit ;
+  white-space: wrap ;
+}

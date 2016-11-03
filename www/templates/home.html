@@ -1,0 +1,49 @@
+   <ion-view view-title="Darshi">
+ <ion-content>
+         <button class="button button-block button-assertive" ng-click="recordSpeech()" ng-disabled="checked">
+          Help
+        </button>
+
+        <div class="item item-text-wrap">
+            {{recognizedText}}
+          </div>
+         <button class="button button-block button-energized" ng-click="findBeacons('where am I',true)">Where am I</button>
+       <div class="list">
+        <div class="item" ng-repeat="(key, value) in beacons">
+            <div class="row">
+                <div class="col truncate">
+                    {{value.uuid}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    major: {{value.major}}
+                </div>
+                <div class="col">
+                    minor: {{value.minor}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col ">
+                   {{value.rssi}}
+                </div>
+            </div>
+              <div class="row">
+                <div class="col ">
+                  {{value.proximity}}
+                </div>
+            </div>
+              <div class="row">
+                <div class="col ">
+                  {{txpower}}
+                </div>
+            </div>
+              <div class="row">
+                <div class="col ">
+                  {{distance}}
+                </div>
+            </div>
+        </div>
+    </div>
+      </ion-content>
+        </ion-view>
