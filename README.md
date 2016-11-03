@@ -1,8 +1,6 @@
 
 
-Darshi 
-
- 
+Darshi - Way Forward..
 
 Ionic App for helping "Differently Abled" people . 
 
@@ -30,9 +28,12 @@ $ ionic emulate -l -c android 
 To Build and generate unsigned APK:-  
 
 $ ionic build android
- 
 
- 
+ Description of Source Files:
+ 
+ Darshi_app/www/js/controller.js - Main controller with Logic for identifying speech , calculating proxmity and covert from text to speech
+ 
+ Darshi_app/www/js/app.js - Linking view and controller
 
 Issues 
 
