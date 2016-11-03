@@ -28,7 +28,7 @@ angular.module('starter', ['ionic','starter.controller', 'ngCordova','ngCordovaB
 .state('home', {
     url: '/home',
     templateUrl: 'templates/home.html',
-    controller: 'ExampleController'
+    controller: 'MainController'
 });
 
 
